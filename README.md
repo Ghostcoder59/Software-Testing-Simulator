@@ -2,9 +2,11 @@
 
 A modern, high-contrast **Black & White** web application developed for college Software Engineering laboratory practicals.
 
-It features interactive demonstrations for:
-1. **Experiment 8 (EXP-8)**: Cyclomatic Complexity Calculator ($V(G) = E - N + 2P$)
-2. **Experiment 9 (EXP-9)**: Black-Box Testing Simulator (Boundary Value Analysis & Equivalence Partitioning)
+It features four interactive simulation modules:
+1. **Cyclomatic Complexity Calculator** ($V(G) = E - N + 2P$)
+2. **Black-Box Testing Simulator** (Boundary Value Analysis & Equivalence Partitioning)
+3. **Basic COCOMO Cost Model** (Software Effort, Schedule Duration, and Staffing Estimation)
+4. **Release & Deployment Strategies** (Blue-Green, Canary Progressive Delivery, and Rolling Updates)
 
 ---
 
@@ -55,7 +57,7 @@ Open **[http://localhost:8000](http://localhost:8000)** in your browser!
 
 ## 🧪 Running Automated Unit Tests
 
-To run the complete test suite (15 automated tests covering calculation formulas, boundary checks, and API endpoints):
+To run the complete automated test suite (22 automated tests covering calculation formulas, boundary checks, and API endpoints):
 
 ```powershell
 cd "c:\Users\Lenovo\Downloads\SE PROJECT"
@@ -85,43 +87,29 @@ docker compose down
 
 ---
 
-### Method 2: Free Cloud Hosting (Render / Railway)
+### Method 2: Cloud Deployment (Render Backend + Vercel Frontend)
 
-1. Push your project to GitHub.
-2. In [Render](https://render.com/) or [Railway](https://railway.app/), create a **New Web Service** pointing to your repository.
-3. Configure the service:
-   - **Environment:** Docker
-   - **Port:** `8000`
-   - Render / Railway will automatically detect the `Dockerfile`, build the React frontend, install Python dependencies, and serve the unified application.
-
----
-
-### Method 3: Separate Frontend & Backend Deployment
-
-#### Backend on Render (Python Web Service):
-- **Root Directory:** `backend`
-- **Build Command:** `pip install -r requirements.txt`
-- **Start Command:** `uvicorn main:app --host 0.0.0.0 --port $PORT`
-
-#### Frontend on Vercel / Netlify:
-- **Root Directory:** `frontend`
-- **Build Command:** `npm run build`
-- **Output Directory:** `dist`
-- **Environment Variable:** `VITE_API_URL=https://your-backend-url.onrender.com`
+1. **Backend on Render:**
+   - Push repository to GitHub.
+   - Create a **New Web Service** on [Render](https://render.com/).
+   - Build Command: `pip install -r backend/requirements.txt`
+   - Start Command: `uvicorn main:app --app-dir backend --host 0.0.0.0 --port $PORT`
+2. **Frontend on Vercel:**
+   - Import repository on [Vercel](https://vercel.com/).
+   - Root Directory: `frontend`
+   - Environment Variable: `VITE_API_URL=https://software-testing-simulator.onrender.com`
 
 ---
 
-## 📋 Experiments Demonstration Guide
+## 📋 Interactive Simulation Modules Reference
 
-### Experiment 8: Cyclomatic Complexity Calculator
+### 1. Cyclomatic Complexity Calculator
 
 **Formula:**
 $$V(G) = E - N + 2P$$
 Where $E$ = Number of edges, $N$ = Number of nodes, and $P$ = Connected components.
 
-#### Sample Demonstration Inputs:
-
-| Scenario | Nodes (N) | Edges (E) | Components (P) | Expected V(G) | McCabe Risk Rating |
+| Scenario | Nodes (N) | Edges (E) | Components (P) | Result V(G) | McCabe Risk Rating |
 | :--- | :---: | :---: | :---: | :---: | :--- |
 | **Sequential Code** | 4 | 3 | 1 | **1** | Low Risk (Simple) |
 | **If-Else Decision** | 4 | 4 | 1 | **2** | Low Risk (Simple) |
@@ -132,7 +120,7 @@ Where $E$ = Number of edges, $N$ = Number of nodes, and $P$ = Connected componen
 
 ---
 
-### Experiment 9: Black-Box Testing Simulator
+### 2. Black-Box Testing Simulator
 
 **Grading Specification:**
 - `90 – 100`: **Grade A** (Distinction)
@@ -142,11 +130,11 @@ Where $E$ = Number of edges, $N$ = Number of nodes, and $P$ = Connected componen
 - `0 – 59`: **Grade F** (Fail)
 - Outside `0 – 100` or non-numeric: **INVALID**
 
-#### Sample Boundary Value Analysis (BVA) Inputs:
+#### Boundary Value Analysis (BVA) Reference:
 
 | Test ID | Input | Expected Output | Classification | Rationale |
 | :--- | :---: | :---: | :--- | :--- |
-| **BVA-01** | `-1` | `INVALID` | Outer Lower Boundary | Just below minimum valid limit ($0$). |
+| **BVA-01** | `-1` | `INVALID` | Outer Lower Boundary | $Min - 1$: verifies rejection of negative marks. |
 | **BVA-02** | `0` | `Grade F` | Lower Boundary | Minimum valid score; boundary of Grade F. |
 | **BVA-03** | `1` | `Grade F` | Inner Lower Boundary | Just above minimum valid score. |
 | **BVA-05** | `59` | `Grade F` | Intra-Grade Boundary | Maximum score failing before passing Grade D ($60$). |
@@ -155,7 +143,7 @@ Where $E$ = Number of edges, $N$ = Number of nodes, and $P$ = Connected componen
 | **BVA-14** | `100` | `Grade A` | Upper Boundary | Maximum valid score allowed. |
 | **BVA-15** | `101` | `INVALID` | Outer Upper Boundary | Just above maximum valid score ($100$). |
 
-#### Sample Equivalence Partitioning (EP) Inputs:
+#### Equivalence Partitioning (EP) Reference:
 
 | Test ID | Input | Expected Output | Equivalence Class |
 | :--- | :---: | :---: | :--- |
@@ -170,10 +158,37 @@ Where $E$ = Number of edges, $N$ = Number of nodes, and $P$ = Connected componen
 
 ---
 
+### 3. Basic COCOMO Cost Estimation
+
+**Formulas:**
+* Effort ($E$): $E = a \times (\text{KLOC})^b$ (Person-Months)
+* Development Time ($T$): $T = c \times (E)^d$ (Months)
+* Average Team Size ($P$): $P = E / T$ (Persons)
+
+| Project Category | $a$ | $b$ | $c$ | $d$ | Characteristic |
+| :--- | :---: | :---: | :---: | :---: | :--- |
+| **Organic** | 2.4 | 1.05 | 2.5 | 0.38 | Small, straightforward, experienced team |
+| **Semi-detached** | 3.0 | 1.12 | 2.5 | 0.35 | Medium size, mixed experience, moderately strict |
+| **Embedded** | 3.6 | 1.20 | 2.5 | 0.32 | Complex system with tight hardware/regulatory constraints |
+
+**Benchmark Case (50 KLOC Semi-detached):**
+* Effort: **239.87 person-months**
+* Duration: **17.02 months**
+* Average Team Size: **14.09 persons**
+
+---
+
+### 4. Release & Deployment Strategies Simulator
+
+* **Blue-Green Deployment:** Provisions parallel environments. Routes 100% of live traffic to Blue (v1.0), verifies Green (v2.0), flips traffic via router, with instant zero-downtime rollback capability.
+* **Canary Release:** Progressively allocates user traffic percentages (e.g. 10% &rarr; 25% &rarr; 50% &rarr; 100%) while monitoring telemetry and error budgets.
+* **Rolling Update:** Iteratively upgrades cluster nodes in configurable batch sizes with continuous cluster uptime.
+
+---
+
 ## 🎨 Design Philosophy: Black & White Monochrome
 
 The UI adheres strictly to a clean, high-contrast, minimalist **Black & White** theme:
-- **Palette**: Deep jet black (`#09090b`), pure white surfaces (`#ffffff`), and neutral slate borders (`#e4e4e7`).
-- **Typography**: Clean sans-serif (`Inter`) with code/values rendered in monospace (`JetBrains Mono`).
-- **Visuals**: Vector SVG Control Flow Graph with high-contrast circular nodes, decision diamonds, and directed arrows.
-- **Accreditation**: Designed for professional Software Engineering laboratory presentations.
+* **Palette:** Deep jet black (`#09090b`), pure white surfaces (`#ffffff`), and neutral slate borders (`#e4e4e7`).
+* **Typography:** Clean sans-serif (`Inter`) with code/values rendered in monospace (`JetBrains Mono`).
+* **Visuals:** Vector SVG Control Flow Graph with high-contrast circular nodes, decision diamonds, and directed arrows.
