@@ -66,28 +66,7 @@ cd "c:\Users\Lenovo\Downloads\SE PROJECT"
 
 ---
 
-## 🚀 How to Deploy the Application
-
-### Method 1: Docker (Single-Command Container Deployment)
-
-Ensure [Docker Desktop](https://www.docker.com/products/docker-desktop/) is running:
-
-```powershell
-cd "c:\Users\Lenovo\Downloads\SE PROJECT"
-
-# Build and start container
-docker compose up --build
-```
-Access the application at **[http://localhost:8000](http://localhost:8000)**.
-
-To stop the container:
-```powershell
-docker compose down
-```
-
----
-
-### Method 2: Cloud Deployment (Render Backend + Vercel Frontend)
+## 🚀 How to Deploy the Application (Render + Vercel)
 
 1. **Backend on Render:**
    - Push repository to GitHub.
