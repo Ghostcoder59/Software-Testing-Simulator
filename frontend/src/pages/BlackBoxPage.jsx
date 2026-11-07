@@ -141,12 +141,12 @@ export default function BlackBoxPage({ onTestRun, onSuiteRun }) {
       <div className="card highlight">
         <div className="card-header">
           <div>
-            <h2 className="card-title">Black-Box Testing Simulator (EXP-9)</h2>
+            <h2 className="card-title">Black-Box Testing Simulator</h2>
             <p className="card-subtitle">
               Verify software behavior using Boundary Value Analysis (BVA) and Equivalence Partitioning (EP)
             </p>
           </div>
-          <span className="card-tag">Experiment 9</span>
+          <span className="card-tag">Functional Testing</span>
         </div>
         <p style={{ fontSize: '0.86rem', color: 'var(--text-secondary)', lineHeight: '1.6' }}>
           Black-box testing derives test scenarios strictly from functional specifications without examining source code. 

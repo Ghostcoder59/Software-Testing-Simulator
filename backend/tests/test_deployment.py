@@ -54,3 +54,4 @@ def test_rolling_update():
     r3 = simulate_rolling_update(total_servers=6, batch_size=2, current_step=3)
     assert r3.updated_servers == 6
     assert r3.is_complete is True
+

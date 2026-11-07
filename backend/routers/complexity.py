@@ -15,7 +15,7 @@ router = APIRouter(prefix="/api/complexity", tags=["Cyclomatic Complexity"])
 @router.get("/status")
 def get_complexity_status():
     return {
-        "module": "Cyclomatic Complexity Calculator (EXP-8)",
+        "module": "Cyclomatic Complexity Calculator",
         "status": "ready",
         "formula": "V(G) = E - N + 2P",
         "description": "McCabe Cyclomatic Complexity computation and Control Flow Graph validation."

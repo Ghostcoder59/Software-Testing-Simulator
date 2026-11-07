@@ -35,10 +35,10 @@ def get_api_info():
         "docs_url": "/docs",
         "status": "online",
         "modules": [
-            "EXP-8: Cyclomatic Complexity",
-            "EXP-9: Black-Box Testing",
-            "EXP-3: Basic COCOMO Estimation",
-            "EXP-9-DEV: Release & Deployment Strategies"
+            "Cyclomatic Complexity Calculator",
+            "Black-Box Testing Simulator",
+            "Basic COCOMO Estimation",
+            "Release & Deployment Strategies"
         ]
     }
 

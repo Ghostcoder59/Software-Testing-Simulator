@@ -21,7 +21,7 @@ router = APIRouter(prefix="/api/blackbox", tags=["Black-Box Testing"])
 @router.get("/status")
 def get_blackbox_status():
     return {
-        "module": "Black-Box Testing Simulator (EXP-9)",
+        "module": "Black-Box Testing Simulator",
         "status": "ready",
         "specification": "College Marks-to-Grade conversion system (0-100)",
         "techniques": ["Boundary Value Analysis (BVA)", "Equivalence Partitioning (EP)"]

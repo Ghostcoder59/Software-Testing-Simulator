@@ -50,3 +50,4 @@ class RollingUpdateResponse(BaseModel):
     is_complete: bool
     servers: List[ServerInstance]
     status_message: str
+

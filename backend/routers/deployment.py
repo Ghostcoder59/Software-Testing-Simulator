@@ -29,3 +29,4 @@ def canary_endpoint(payload: CanaryRequest):
 def rolling_endpoint(payload: RollingUpdateRequest):
     """Simulates step-by-step Rolling Update across a fleet of server instances."""
     return simulate_rolling_update(payload.total_servers, payload.batch_size, payload.current_step)
+

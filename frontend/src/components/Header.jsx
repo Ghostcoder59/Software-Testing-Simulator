@@ -6,13 +6,13 @@ export default function Header({ currentTab, backendStatus }) {
       case 'overview':
         return 'Overview & Laboratory Dashboard';
       case 'complexity':
-        return 'Experiment 8: Cyclomatic Complexity Calculator';
+        return 'Cyclomatic Complexity Calculator';
       case 'blackbox':
-        return 'Experiment 9: Black-Box Testing Simulator';
+        return 'Black-Box Testing Simulator';
       case 'cocomo':
-        return 'Experiment 3: Basic COCOMO Cost & Effort Estimation';
+        return 'Basic COCOMO Cost & Effort Estimation';
       case 'deployment':
-        return 'Experiment 9 (DevOps): Release & Deployment Strategies';
+        return 'Release & Deployment Strategies';
       default:
         return 'Software Quality Simulator';
     }

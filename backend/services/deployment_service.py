@@ -116,3 +116,4 @@ def simulate_rolling_update(total_servers: int = 6, batch_size: int = 2, current
         servers=server_list,
         status_message=msg
     )
+

@@ -51,12 +51,12 @@ export default function CocomoPage({ onEstimatePerformed }) {
       <div className="card highlight">
         <div className="card-header">
           <div>
-            <h2 className="card-title">Basic COCOMO Cost & Effort Estimation (EXP-3)</h2>
+            <h2 className="card-title">Basic COCOMO Cost & Effort Estimation</h2>
             <p className="card-subtitle">
               Barry Boehm's Constructive Cost Model for Software Resource Planning
             </p>
           </div>
-          <span className="card-tag">Experiment 3</span>
+          <span className="card-tag">Cost Estimation</span>
         </div>
         <p style={{ fontSize: '0.86rem', color: 'var(--text-secondary)', lineHeight: '1.6' }}>
           Basic COCOMO estimates software development effort ($E$), duration ($T$), and team size ($P$) 
@@ -272,3 +272,4 @@ export default function CocomoPage({ onEstimatePerformed }) {
     </div>
   );
 }
+

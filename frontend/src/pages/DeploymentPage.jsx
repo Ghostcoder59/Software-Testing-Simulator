@@ -63,7 +63,7 @@ export default function DeploymentPage({ onDeploymentSimulated }) {
       <div className="card highlight">
         <div className="card-header">
           <div>
-            <h2 className="card-title">Release & Deployment Strategies Simulator (EXP-9)</h2>
+            <h2 className="card-title">Release & Deployment Strategies Simulator</h2>
             <p className="card-subtitle">
               Simulating Zero-Downtime Deployment Paradigms: Blue-Green, Canary Releases, and Rolling Updates
             </p>
@@ -431,3 +431,4 @@ export default function DeploymentPage({ onDeploymentSimulated }) {
     </div>
   );
 }
+

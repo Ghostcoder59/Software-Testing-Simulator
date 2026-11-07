@@ -17,23 +17,23 @@ export default function Overview({ setCurrentTab, stats }) {
 
         <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', lineHeight: '1.6', marginBottom: '1rem' }}>
           An interactive laboratory platform providing practical, mathematical, and algorithmic simulations for 
-          core Software Engineering disciplines: <strong>Structural White-Box Testing (EXP-8)</strong>, 
-          <strong>Functional Black-Box Testing (EXP-9)</strong>, <strong>Project Cost & Effort Estimation (EXP-3)</strong>, 
-          and <strong>Modern DevOps Deployment Strategies (EXP-9)</strong>.
+          core Software Engineering disciplines: <strong>Structural White-Box Testing</strong>, 
+          <strong>Functional Black-Box Testing</strong>, <strong>Project Cost & Effort Estimation</strong>, 
+          and <strong>Modern DevOps Deployment Strategies</strong>.
         </p>
 
         <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap' }}>
           <button onClick={() => setCurrentTab('complexity')} className="btn btn-primary">
-            EXP-8: Cyclomatic Complexity &rarr;
+            Cyclomatic Complexity &rarr;
           </button>
           <button onClick={() => setCurrentTab('blackbox')} className="btn btn-secondary">
-            EXP-9: Black-Box Testing &rarr;
+            Black-Box Testing &rarr;
           </button>
           <button onClick={() => setCurrentTab('cocomo')} className="btn btn-secondary">
-            EXP-3: COCOMO Model &rarr;
+            COCOMO Model &rarr;
           </button>
           <button onClick={() => setCurrentTab('deployment')} className="btn btn-secondary">
-            EXP-9: Deployment Strategies &rarr;
+            Deployment Strategies &rarr;
           </button>
         </div>
       </div>
@@ -48,10 +48,10 @@ export default function Overview({ setCurrentTab, stats }) {
                 White-Box Testing
               </span>
               <h3 className="card-title" style={{ marginTop: '0.2rem' }}>
-                Cyclomatic Complexity (EXP-8)
+                Cyclomatic Complexity Calculator
               </h3>
             </div>
-            <span className="badge badge-outline">EXP-8</span>
+            <span className="badge badge-outline">White-Box</span>
           </div>
 
           <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', lineHeight: '1.5', marginBottom: '1rem' }}>
@@ -62,7 +62,7 @@ export default function Overview({ setCurrentTab, stats }) {
           </p>
 
           <button onClick={() => setCurrentTab('complexity')} className="btn btn-secondary" style={{ width: '100%' }}>
-            Launch EXP-8 Calculator
+            Launch Calculator
           </button>
         </div>
 
@@ -74,21 +74,21 @@ export default function Overview({ setCurrentTab, stats }) {
                 Black-Box Testing
               </span>
               <h3 className="card-title" style={{ marginTop: '0.2rem' }}>
-                BVA & Equivalence Partitioning (EXP-9)
+                Boundary Value Analysis & Equivalence Partitioning
               </h3>
             </div>
-            <span className="badge badge-outline">EXP-9</span>
+            <span className="badge badge-outline">Black-Box</span>
           </div>
 
           <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', lineHeight: '1.5', marginBottom: '1rem' }}>
-            Validates functional specifications using Boundary Value Analysis and Equivalence Partitioning on a college grading policy:
+            Validates functional specifications using Boundary Value Analysis and Equivalence Partitioning on a grading policy:
             <strong className="mono" style={{ display: 'block', marginTop: '0.35rem', color: 'var(--text-primary)' }}>
               Marks-to-Grade Validation (0 – 100)
             </strong>
           </p>
 
           <button onClick={() => setCurrentTab('blackbox')} className="btn btn-secondary" style={{ width: '100%' }}>
-            Launch EXP-9 Testing Simulator
+            Launch Testing Simulator
           </button>
         </div>
 
@@ -100,10 +100,10 @@ export default function Overview({ setCurrentTab, stats }) {
                 Software Metrics & Estimation
               </span>
               <h3 className="card-title" style={{ marginTop: '0.2rem' }}>
-                Basic COCOMO Cost Model (EXP-3)
+                Basic COCOMO Cost Model
               </h3>
             </div>
-            <span className="badge badge-outline">EXP-3</span>
+            <span className="badge badge-outline">Estimation</span>
           </div>
 
           <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', lineHeight: '1.5', marginBottom: '1rem' }}>
@@ -114,7 +114,7 @@ export default function Overview({ setCurrentTab, stats }) {
           </p>
 
           <button onClick={() => setCurrentTab('cocomo')} className="btn btn-secondary" style={{ width: '100%' }}>
-            Launch EXP-3 COCOMO Estimator
+            Launch COCOMO Estimator
           </button>
         </div>
 
@@ -126,7 +126,7 @@ export default function Overview({ setCurrentTab, stats }) {
                 Release Engineering & DevOps
               </span>
               <h3 className="card-title" style={{ marginTop: '0.2rem' }}>
-                Deployment Strategies (EXP-9)
+                Release & Deployment Strategies
               </h3>
             </div>
             <span className="badge badge-outline">DevOps</span>
@@ -159,19 +159,19 @@ export default function Overview({ setCurrentTab, stats }) {
           <div className="stat-box">
             <div className="stat-label">Complexity Calculations</div>
             <div className="stat-value">{stats.complexityCalculations}</div>
-            <div style={{ fontSize: '0.74rem', color: 'var(--text-muted)', marginTop: '0.2rem' }}>EXP-8 Evaluations</div>
+            <div style={{ fontSize: '0.74rem', color: 'var(--text-muted)', marginTop: '0.2rem' }}>Basis Path Runs</div>
           </div>
 
           <div className="stat-box">
-            <div className="stat-label">Tests Cases Executed</div>
+            <div className="stat-label">Test Cases Executed</div>
             <div className="stat-value">{stats.testsExecuted}</div>
-            <div style={{ fontSize: '0.74rem', color: 'var(--text-muted)', marginTop: '0.2rem' }}>EXP-9 Executions</div>
+            <div style={{ fontSize: '0.74rem', color: 'var(--text-muted)', marginTop: '0.2rem' }}>Black-Box Executions</div>
           </div>
 
           <div className="stat-box">
             <div className="stat-label">COCOMO Estimates</div>
             <div className="stat-value">{stats.cocomoEstimations}</div>
-            <div style={{ fontSize: '0.74rem', color: 'var(--text-muted)', marginTop: '0.2rem' }}>EXP-3 Evaluations</div>
+            <div style={{ fontSize: '0.74rem', color: 'var(--text-muted)', marginTop: '0.2rem' }}>Cost Evaluations</div>
           </div>
 
           <div className="stat-box">

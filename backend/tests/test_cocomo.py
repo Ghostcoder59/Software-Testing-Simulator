@@ -27,3 +27,4 @@ def test_cocomo_embedded():
 def test_invalid_mode_raises_error():
     with pytest.raises(ValueError):
         calculate_cocomo(kloc=20.0, mode_key="invalid-mode")
+

@@ -5,7 +5,6 @@ export default function Sidebar({ currentTab, setCurrentTab }) {
     {
       id: 'overview',
       label: 'Overview',
-      badge: 'Home',
       icon: (
         <svg className="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <rect x="3" y="3" width="7" height="7" rx="1" />
@@ -18,7 +17,6 @@ export default function Sidebar({ currentTab, setCurrentTab }) {
     {
       id: 'complexity',
       label: 'Cyclomatic Complexity',
-      badge: 'EXP-8',
       icon: (
         <svg className="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <circle cx="6" cy="6" r="3" />
@@ -32,7 +30,6 @@ export default function Sidebar({ currentTab, setCurrentTab }) {
     {
       id: 'blackbox',
       label: 'Black-Box Testing',
-      badge: 'EXP-9',
       icon: (
         <svg className="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
@@ -44,7 +41,6 @@ export default function Sidebar({ currentTab, setCurrentTab }) {
     {
       id: 'cocomo',
       label: 'COCOMO Cost Estimation',
-      badge: 'EXP-3',
       icon: (
         <svg className="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
@@ -54,7 +50,6 @@ export default function Sidebar({ currentTab, setCurrentTab }) {
     {
       id: 'deployment',
       label: 'Deployment Strategies',
-      badge: 'EXP-9',
       icon: (
         <svg className="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
@@ -82,11 +77,6 @@ export default function Sidebar({ currentTab, setCurrentTab }) {
           >
             {item.icon}
             <span style={{ flex: 1 }}>{item.label}</span>
-            {item.badge && (
-              <span className="nav-badge">
-                {item.badge}
-              </span>
-            )}
           </button>
         ))}
       </nav>

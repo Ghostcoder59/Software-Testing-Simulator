@@ -89,12 +89,12 @@ export default function ComplexityPage({ onCalculationPerformed }) {
       <div className="card highlight">
         <div className="card-header">
           <div>
-            <h2 className="card-title">Cyclomatic Complexity Calculator (EXP-8)</h2>
+            <h2 className="card-title">Cyclomatic Complexity Calculator</h2>
             <p className="card-subtitle">
               Measure source code structural complexity using McCabe's graph-theoretic metric: <code>V(G) = E - N + 2P</code>
             </p>
           </div>
-          <span className="card-tag">Experiment 8</span>
+          <span className="card-tag">White-Box Testing</span>
         </div>
 
         <p style={{ fontSize: '0.86rem', color: 'var(--text-secondary)', lineHeight: '1.6' }}>

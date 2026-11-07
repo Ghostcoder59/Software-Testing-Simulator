@@ -25,3 +25,4 @@ class CocomoResponse(BaseModel):
     formula_steps: List[str]
     description: str
     recommendation: str
+
