@@ -1,173 +1,240 @@
 # Software Quality and Testing Simulator
 
-A modern, high-contrast **Black & White** web application developed for college Software Engineering laboratory practicals.
+A modern, interactive web-based application designed to demonstrate fundamental concepts of **Software Engineering, Software Quality Assurance, and Software Testing** through practical simulations.
 
-It features four interactive simulation modules:
-1. **Cyclomatic Complexity Calculator** ($V(G) = E - N + 2P$)
-2. **Black-Box Testing Simulator** (Boundary Value Analysis & Equivalence Partitioning)
-3. **Basic COCOMO Cost Model** (Software Effort, Schedule Duration, and Staffing Estimation)
-4. **Release & Deployment Strategies** (Blue-Green, Canary Progressive Delivery, and Rolling Updates)
+Built with a clean, high-contrast **Black & White monochrome interface**, the application integrates four essential software engineering concepts into a unified platform, allowing users to explore calculations, validate test cases, estimate development costs, and understand modern deployment strategies.
 
----
+## 🚀 Live Application
 
-## ⚡ How to Run the Project (Windows 11 / VS Code)
+**Access the deployed application here:**
 
-You can run the project in **Development Mode** (Hot Reloading) or in **Unified Production Mode** (Single Port).
+[Software Quality and Testing Simulator](https://software-testing-simulator.vercel.app)
 
-### Option 1: Standard Development Mode (Recommended for Development)
-
-Open VS Code and press `` Ctrl + ` `` to open PowerShell. Use **two terminal tabs**:
-
-#### Terminal 1 — Start FastAPI Backend:
-```powershell
-cd "c:\Users\Lenovo\Downloads\SE PROJECT\backend"
-.\venv\Scripts\Activate.ps1
-uvicorn main:app --reload --port 8000
-```
-- **Backend API:** [http://127.0.0.1:8000](http://127.0.0.1:8000)
-- **Interactive Swagger Docs:** [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
-- **Health Check:** [http://127.0.0.1:8000/api/health](http://127.0.0.1:8000/api/health)
-
-#### Terminal 2 — Start React Frontend:
-```powershell
-cd "c:\Users\Lenovo\Downloads\SE PROJECT\frontend"
-npm run dev
-```
-- **Web Interface:** Open **[http://localhost:5173](http://localhost:5173)** in your browser.
-- Look for the top-right pill: **`● Backend Online (FastAPI)`**.
+The application is publicly accessible through its deployed web interface.
 
 ---
 
-### Option 2: Unified Single-Server Mode (Runs on a Single Port)
+## 🧪 Core Simulation Modules
 
-You can build the React frontend into static assets and let FastAPI serve both the frontend and API simultaneously on port 8000:
+The application consists of four interactive modules:
 
-```powershell
-cd "c:\Users\Lenovo\Downloads\SE PROJECT"
-
-# 1. Build React frontend
-npm run build --prefix frontend
-
-# 2. Start FastAPI (serves both React UI and REST API on port 8000)
-.\backend\venv\Scripts\uvicorn.exe main:app --app-dir backend --port 8000
-```
-Open **[http://localhost:8000](http://localhost:8000)** in your browser!
+1. **Cyclomatic Complexity Calculator** – Measures program complexity and estimates the number of independent execution paths.
+2. **Black-Box Testing Simulator** – Demonstrates Boundary Value Analysis (BVA) and Equivalence Partitioning (EP).
+3. **Basic COCOMO Cost Estimator** – Calculates software development effort, estimated duration, and average team size.
+4. **Release & Deployment Strategies Simulator** – Demonstrates Blue-Green Deployment, Canary Releases, and Rolling Updates.
 
 ---
 
-## 🧪 Running Automated Unit Tests
-
-To run the complete automated test suite (22 automated tests covering calculation formulas, boundary checks, and API endpoints):
-
-```powershell
-cd "c:\Users\Lenovo\Downloads\SE PROJECT"
-.\backend\venv\Scripts\pytest.exe backend\tests -v
-```
-
----
-
-## 🚀 How to Deploy the Application (Render + Vercel)
-
-1. **Backend on Render:**
-   - Push repository to GitHub.
-   - Create a **New Web Service** on [Render](https://render.com/).
-   - Build Command: `pip install -r backend/requirements.txt`
-   - Start Command: `uvicorn main:app --app-dir backend --host 0.0.0.0 --port $PORT`
-2. **Frontend on Vercel:**
-   - Import repository on [Vercel](https://vercel.com/).
-   - Root Directory: `frontend`
-   - Environment Variable: `VITE_API_URL=https://software-testing-simulator.onrender.com`
-
----
-
-## 📋 Interactive Simulation Modules Reference
+## 📋 Module Specifications
 
 ### 1. Cyclomatic Complexity Calculator
 
+Cyclomatic Complexity is a software metric used to measure the logical complexity of a program by calculating the number of independent paths through its control flow graph.
+
 **Formula:**
-$$V(G) = E - N + 2P$$
-Where $E$ = Number of edges, $N$ = Number of nodes, and $P$ = Connected components.
 
-| Scenario | Nodes (N) | Edges (E) | Components (P) | Result V(G) | McCabe Risk Rating |
-| :--- | :---: | :---: | :---: | :---: | :--- |
-| **Sequential Code** | 4 | 3 | 1 | **1** | Low Risk (Simple) |
-| **If-Else Decision** | 4 | 4 | 1 | **2** | Low Risk (Simple) |
-| **While Loop (Iteration)** | 4 | 4 | 1 | **2** | Low Risk (Simple) |
-| **Nested Decisions** | 6 | 7 | 1 | **3** | Low Risk (Simple) |
-| **Multi-Module (P=2)** | 8 | 8 | 2 | **4** | Low Risk (Simple) |
-| **Inconsistent Graph** | 5 | 2 | 1 | **Invalid** | Rejected: $E < N - P$ |
+\[
+V(G) = E - N + 2P
+\]
 
----
+Where:
+- **E:** Number of edges in the control flow graph.
+- **N:** Number of nodes in the control flow graph.
+- **P:** Number of connected components.
+
+**Simulation Scenarios:**
+
+| Scenario | Nodes (N) | Edges (E) | Components (P) | Complexity |
+|---|---:|---:|---:|---:|
+| Sequential Code | 4 | 3 | 1 | **1** |
+| If-Else Decision | 4 | 4 | 1 | **2** |
+| While Loop | 4 | 4 | 1 | **2** |
+| Nested Decisions | 6 | 7 | 1 | **3** |
+| Multi-Module | 8 | 8 | 2 | **4** |
+| Inconsistent Graph | 5 | 2 | 1 | **Invalid** |
+
+The module also provides a visual representation of the Control Flow Graph (CFG), helping users understand nodes, edges, decision points, and execution paths.
 
 ### 2. Black-Box Testing Simulator
 
+Black-Box Testing is a software testing technique in which the functionality of an application is verified without examining its internal source code.
+
+This module uses a **Marks-to-Grade Conversion System** to demonstrate two important black-box testing techniques.
+
 **Grading Specification:**
-- `90 – 100`: **Grade A** (Distinction)
-- `80 – 89`: **Grade B** (Very Good)
-- `70 – 79`: **Grade C** (Good)
-- `60 – 69`: **Grade D** (Satisfactory / Pass)
-- `0 – 59`: **Grade F** (Fail)
-- Outside `0 – 100` or non-numeric: **INVALID**
 
-#### Boundary Value Analysis (BVA) Reference:
+| Marks Range | Expected Grade | Description |
+|---|---|---|
+| 90–100 | Grade A | Distinction |
+| 80–89 | Grade B | Very Good |
+| 70–79 | Grade C | Good |
+| 60–69 | Grade D | Satisfactory / Pass |
+| 0–59 | Grade F | Fail |
+| Outside 0–100 | INVALID | Invalid Input |
 
-| Test ID | Input | Expected Output | Classification | Rationale |
-| :--- | :---: | :---: | :--- | :--- |
-| **BVA-01** | `-1` | `INVALID` | Outer Lower Boundary | $Min - 1$: verifies rejection of negative marks. |
-| **BVA-02** | `0` | `Grade F` | Lower Boundary | Minimum valid score; boundary of Grade F. |
-| **BVA-03** | `1` | `Grade F` | Inner Lower Boundary | Just above minimum valid score. |
-| **BVA-05** | `59` | `Grade F` | Intra-Grade Boundary | Maximum score failing before passing Grade D ($60$). |
-| **BVA-06** | `60` | `Grade D` | Intra-Grade Boundary | Minimum score satisfying passing Grade D. |
-| **BVA-12** | `90` | `Grade A` | Intra-Grade Boundary | Lower threshold for distinction Grade A. |
-| **BVA-14** | `100` | `Grade A` | Upper Boundary | Maximum valid score allowed. |
-| **BVA-15** | `101` | `INVALID` | Outer Upper Boundary | Just above maximum valid score ($100$). |
+**A. Boundary Value Analysis (BVA)**
 
-#### Equivalence Partitioning (EP) Reference:
+BVA focuses on testing values at, immediately below, and immediately above the boundaries of an input range.
+
+| Test ID | Input | Expected Output |
+|---|---:|---|
+| BVA-01 | -1 | INVALID |
+| BVA-02 | 0 | Grade F |
+| BVA-03 | 1 | Grade F |
+| BVA-05 | 59 | Grade F |
+| BVA-06 | 60 | Grade D |
+| BVA-12 | 90 | Grade A |
+| BVA-14 | 100 | Grade A |
+| BVA-15 | 101 | INVALID |
+
+**B. Equivalence Partitioning (EP)**
+
+EP divides input data into groups or classes that are expected to behave similarly. Instead of testing every possible input, representative values from each class are selected.
 
 | Test ID | Input | Expected Output | Equivalence Class |
-| :--- | :---: | :---: | :--- |
-| **EP-01** | `-15` | `INVALID` | Class 1: Negative numbers ($< 0$) |
-| **EP-02** | `35` | `Grade F` | Class 2: Valid Failing score ($0 \le x \le 59$) |
-| **EP-03** | `65` | `Grade D` | Class 3: Valid Passing score ($60 \le x \le 69$) |
-| **EP-04** | `75` | `Grade C` | Class 4: Valid Average score ($70 \le x \le 79$) |
-| **EP-05** | `85` | `Grade B` | Class 5: Valid High score ($80 \le x \le 89$) |
-| **EP-06** | `95` | `Grade A` | Class 6: Valid Distinction score ($90 \le x \le 100$) |
-| **EP-07** | `115` | `INVALID` | Class 7: Excess score ($> 100$) |
-| **EP-08** | `"abc"` | `INVALID` | Class 8: Non-numeric invalid input |
+|---|---:|---|---|
+| EP-01 | -15 | INVALID | Negative Numbers |
+| EP-02 | 35 | Grade F | Valid Failing Marks |
+| EP-03 | 65 | Grade D | Satisfactory Marks |
+| EP-04 | 75 | Grade C | Average Marks |
+| EP-05 | 85 | Grade B | High Marks |
+| EP-06 | 95 | Grade A | Distinction Marks |
+| EP-07 | 115 | INVALID | Excess Marks |
+| EP-08 | "abc" | INVALID | Non-Numeric Input |
 
----
+The simulator helps users understand how test cases are designed, executed, and classified based on expected application behaviour.
 
 ### 3. Basic COCOMO Cost Estimation
 
-**Formulas:**
-* Effort ($E$): $E = a \times (\text{KLOC})^b$ (Person-Months)
-* Development Time ($T$): $T = c \times (E)^d$ (Months)
-* Average Team Size ($P$): $P = E / T$ (Persons)
+The Constructive Cost Model (COCOMO) is a software cost estimation model used to predict the effort, development time, and staffing requirements of a software project.
 
-| Project Category | $a$ | $b$ | $c$ | $d$ | Characteristic |
-| :--- | :---: | :---: | :---: | :---: | :--- |
-| **Organic** | 2.4 | 1.05 | 2.5 | 0.38 | Small, straightforward, experienced team |
-| **Semi-detached** | 3.0 | 1.12 | 2.5 | 0.35 | Medium size, mixed experience, moderately strict |
-| **Embedded** | 3.6 | 1.20 | 2.5 | 0.32 | Complex system with tight hardware/regulatory constraints |
+The simulator implements the Basic COCOMO model using three project categories.
 
-**Benchmark Case (50 KLOC Semi-detached):**
-* Effort: **239.87 person-months**
-* Duration: **17.02 months**
-* Average Team Size: **14.09 persons**
+**Estimation Formulas:**
 
----
+**Development Effort:**
+
+\[
+E = a \times (KLOC)^b
+\]
+
+**Development Time:**
+
+\[
+T = c \times (E)^d
+\]
+
+**Average Team Size:**
+
+\[
+P = \frac{E}{T}
+\]
+
+Where:
+- **E:** Estimated effort in person-months.
+- **T:** Development duration in months.
+- **P:** Average number of developers.
+- **KLOC:** Thousands of Lines of Code.
+- **a, b, c, d:** Model-specific constants.
+
+**Project Categories:**
+
+| Project Mode | a | b | c | d | Characteristics |
+|---|---:|---:|---:|---:|---|
+| Organic | 2.4 | 1.05 | 2.5 | 0.38 | Small and relatively simple projects |
+| Semi-detached | 3.0 | 1.12 | 2.5 | 0.35 | Medium-sized projects with mixed experience |
+| Embedded | 3.6 | 1.20 | 2.5 | 0.32 | Complex projects with strict constraints |
+
+**Benchmark Example: 50 KLOC Semi-detached Project**
+
+- Estimated Effort: **239.87 Person-Months**
+- Development Duration: **17.02 Months**
+- Average Team Size: **14.09 Persons**
+
+The module allows users to explore how project size and complexity influence software development resources and timelines.
 
 ### 4. Release & Deployment Strategies Simulator
 
-* **Blue-Green Deployment:** Provisions parallel environments. Routes 100% of live traffic to Blue (v1.0), verifies Green (v2.0), flips traffic via router, with instant zero-downtime rollback capability.
-* **Canary Release:** Progressively allocates user traffic percentages (e.g. 10% &rarr; 25% &rarr; 50% &rarr; 100%) while monitoring telemetry and error budgets.
-* **Rolling Update:** Iteratively upgrades cluster nodes in configurable batch sizes with continuous cluster uptime.
+This module demonstrates three commonly used software deployment strategies and explains how software updates can be delivered while maintaining application availability.
+
+**A. Blue-Green Deployment**
+
+- Maintains two parallel environments: Blue (current version) and Green (new version).
+- Live traffic initially operates through the Blue environment.
+- The Green environment is prepared and verified before release.
+- Traffic is switched to Green after successful validation.
+- Provides a straightforward rollback mechanism by switching traffic back to Blue.
+
+**B. Canary Release**
+
+- Introduces a new software version to a small percentage of users.
+- Gradually increases traffic allocation, for example, 10% → 25% → 50% → 100%.
+- Monitors application performance, errors, and system health.
+- Helps identify potential issues before a full-scale release.
+
+**C. Rolling Update**
+
+- Replaces existing application instances with updated versions in batches.
+- Maintains service availability while updates are performed.
+- Allows continuous deployment without replacing the entire application simultaneously.
+- Supports controlled and incremental software upgrades.
 
 ---
 
-## 🎨 Design Philosophy: Black & White Monochrome
+## 🛠️ Technology Stack
 
-The UI adheres strictly to a clean, high-contrast, minimalist **Black & White** theme:
-* **Palette:** Deep jet black (`#09090b`), pure white surfaces (`#ffffff`), and neutral slate borders (`#e4e4e7`).
-* **Typography:** Clean sans-serif (`Inter`) with code/values rendered in monospace (`JetBrains Mono`).
-* **Visuals:** Vector SVG Control Flow Graph with high-contrast circular nodes, decision diamonds, and directed arrows.
+The application follows a modern frontend-backend architecture.
+
+| Technology | Purpose |
+|---|---|
+| React.js | Interactive frontend development |
+| Vite | Frontend development and build tooling |
+| Python | Backend programming |
+| FastAPI | REST API development and backend processing |
+| Pytest | Automated unit and API testing |
+| SVG | Vector-based control flow graph visualization |
+
+### Application Architecture
+
+The project uses a frontend-backend architecture in which React handles the user interface and interactions, while FastAPI manages backend operations, calculations, and API communication.
+
+This separation improves modularity, maintainability, and scalability.
+
+---
+
+## 🧪 Software Testing & Quality Assurance
+
+The project includes an automated test suite consisting of **22 automated tests** covering:
+
+- Mathematical calculation formulas.
+- Input validation and boundary conditions.
+- Equivalence partitioning scenarios.
+- Backend API endpoints.
+- Expected outputs and error-handling behaviour.
+
+These tests help verify the correctness and reliability of the application's core functionality.
+
+---
+
+## 🎨 UI/UX Design Philosophy
+
+The application follows a minimalist **Black & White Monochrome Design System**, emphasizing readability, consistency, and functionality.
+
+**Design Characteristics:**
+
+- **Colour Palette:** Deep Jet Black (`#09090b`), Pure White (`#ffffff`), and Neutral Slate (`#e4e4e7`).
+- **Typography:** Inter for interface text and JetBrains Mono for technical values and code.
+- **Visualizations:** SVG-based Control Flow Graphs featuring circular nodes, decision diamonds, and directional arrows.
+- **Interface:** High-contrast surfaces, clean layouts, and interactive simulation components.
+
+The overall design aims to provide a distraction-free environment for understanding complex software engineering concepts.
+
+---
+
+## 🎯 Project Objective
+
+The primary objective of the Software Quality and Testing Simulator is to transform theoretical software engineering concepts into practical, interactive learning experiences.
+
+By integrating software complexity measurement, black-box testing techniques, cost estimation models, and deployment strategies, the project provides a unified educational platform for students to understand important aspects of software development and quality assurance.
+
+**The project demonstrates the practical application of software engineering principles through interactive simulations, structured calculations, and automated testing.**
