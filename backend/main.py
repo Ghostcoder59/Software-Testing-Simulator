@@ -4,11 +4,13 @@ from fastapi.staticfiles import StaticFiles
 import os
 from routers.complexity import router as complexity_router
 from routers.blackbox import router as blackbox_router
+from routers.cocomo import router as cocomo_router
+from routers.deployment import router as deployment_router
 
 app = FastAPI(
     title="Software Quality and Testing Simulator API",
-    description="Backend API for EXP-8 (Cyclomatic Complexity) and EXP-9 (Black-Box Testing)",
-    version="1.0.0"
+    description="Backend API for Software Engineering Laboratory (EXP-3, EXP-8, EXP-9)",
+    version="1.1.0"
 )
 
 # CORS configuration allowing local development and deployed Vercel frontend domains
@@ -23,13 +25,21 @@ app.add_middleware(
 # Include API module routers
 app.include_router(complexity_router)
 app.include_router(blackbox_router)
+app.include_router(cocomo_router)
+app.include_router(deployment_router)
 
 @app.get("/api/info")
 def get_api_info():
     return {
         "message": "Welcome to Software Quality and Testing Simulator API",
         "docs_url": "/docs",
-        "status": "online"
+        "status": "online",
+        "modules": [
+            "EXP-8: Cyclomatic Complexity",
+            "EXP-9: Black-Box Testing",
+            "EXP-3: Basic COCOMO Estimation",
+            "EXP-9-DEV: Release & Deployment Strategies"
+        ]
     }
 
 @app.get("/api/health")
@@ -37,7 +47,7 @@ def health_check():
     return {
         "status": "healthy",
         "app": "Software Quality and Testing Simulator",
-        "version": "1.0.0"
+        "version": "1.1.0"
     }
 
 # Unified Mode: If frontend/dist exists, serve static assets & React SPA directly

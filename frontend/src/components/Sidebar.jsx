@@ -41,6 +41,26 @@ export default function Sidebar({ currentTab, setCurrentTab }) {
         </svg>
       ),
     },
+    {
+      id: 'cocomo',
+      label: 'COCOMO Cost Estimation',
+      badge: 'EXP-3',
+      icon: (
+        <svg className="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+        </svg>
+      ),
+    },
+    {
+      id: 'deployment',
+      label: 'Deployment Strategies',
+      badge: 'EXP-9',
+      icon: (
+        <svg className="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+        </svg>
+      ),
+    },
   ];
 
   return (
@@ -49,7 +69,7 @@ export default function Sidebar({ currentTab, setCurrentTab }) {
         <div className="sidebar-logo-icon">SQ</div>
         <div>
           <div className="sidebar-title">SQT Simulator</div>
-          <div className="sidebar-subtitle">Software Engineering</div>
+          <div className="sidebar-subtitle">Software Engineering Lab</div>
         </div>
       </div>
 

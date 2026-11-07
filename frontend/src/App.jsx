@@ -4,6 +4,8 @@ import Sidebar from './components/Sidebar';
 import Overview from './pages/Overview';
 import ComplexityPage from './pages/ComplexityPage';
 import BlackBoxPage from './pages/BlackBoxPage';
+import CocomoPage from './pages/CocomoPage';
+import DeploymentPage from './pages/DeploymentPage';
 import { checkBackendHealth } from './services/api';
 
 export default function App() {
@@ -15,6 +17,8 @@ export default function App() {
     complexityCalculations: 0,
     testsExecuted: 0,
     suitesRun: 0,
+    cocomoEstimations: 0,
+    deploymentsSimulated: 0,
   });
 
   const handleCalculationPerformed = () => {
@@ -36,6 +40,20 @@ export default function App() {
       ...prev,
       suitesRun: prev.suitesRun + 1,
       testsExecuted: prev.testsExecuted + count,
+    }));
+  };
+
+  const handleCocomoPerformed = () => {
+    setStats((prev) => ({
+      ...prev,
+      cocomoEstimations: prev.cocomoEstimations + 1,
+    }));
+  };
+
+  const handleDeploymentSimulated = () => {
+    setStats((prev) => ({
+      ...prev,
+      deploymentsSimulated: prev.deploymentsSimulated + 1,
     }));
   };
 
@@ -78,6 +96,14 @@ export default function App() {
 
         {currentTab === 'blackbox' && (
           <BlackBoxPage onTestRun={handleTestRun} onSuiteRun={handleSuiteRun} />
+        )}
+
+        {currentTab === 'cocomo' && (
+          <CocomoPage onEstimatePerformed={handleCocomoPerformed} />
+        )}
+
+        {currentTab === 'deployment' && (
+          <DeploymentPage onDeploymentSimulated={handleDeploymentSimulated} />
         )}
       </main>
     </div>

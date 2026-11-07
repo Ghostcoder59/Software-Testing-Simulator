@@ -15,7 +15,7 @@ export async function checkBackendHealth() {
   }
 }
 
-// Module A: Cyclomatic Complexity (EXP-8)
+// Module 1: Cyclomatic Complexity (EXP-8)
 export async function calculateComplexity(nodes, edges, components = 1) {
   const res = await fetch(`${BASE_URL}/api/complexity/calculate`, {
     method: 'POST',
@@ -35,7 +35,7 @@ export async function getComplexityExamples() {
   return await res.json();
 }
 
-// Module B: Black-Box Testing (EXP-9)
+// Module 2: Black-Box Testing (EXP-9)
 export async function generateBlackboxTests(technique = 'ALL') {
   const res = await fetch(`${BASE_URL}/api/blackbox/generate-tests`, {
     method: 'POST',
@@ -73,5 +73,50 @@ export async function evaluateMark(mark) {
     body: JSON.stringify({ mark }),
   });
   if (!res.ok) throw new Error(`Failed to evaluate mark: ${res.status}`);
+  return await res.json();
+}
+
+// Module 3: Basic COCOMO Estimation (EXP-3)
+export async function estimateCocomo(kloc, mode, costPerPm = 5000.0) {
+  const res = await fetch(`${BASE_URL}/api/cocomo/estimate`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ kloc: Number(kloc), mode, cost_per_pm: Number(costPerPm) }),
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.detail || `Server error: ${res.status}`);
+  }
+  return await res.json();
+}
+
+// Module 4: Release & Deployment Strategies (EXP-9 DevOps)
+export async function simulateBlueGreen(switchToGreen, greenHealthy = true) {
+  const res = await fetch(`${BASE_URL}/api/deployment/blue-green`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ switch_to_green: switchToGreen, green_healthy: greenHealthy }),
+  });
+  if (!res.ok) throw new Error(`Blue-Green error: ${res.status}`);
+  return await res.json();
+}
+
+export async function simulateCanary(percentage, simulateError = false) {
+  const res = await fetch(`${BASE_URL}/api/deployment/canary`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ percentage: Number(percentage), simulate_error: simulateError }),
+  });
+  if (!res.ok) throw new Error(`Canary error: ${res.status}`);
+  return await res.json();
+}
+
+export async function simulateRollingUpdate(totalServers, batchSize, currentStep) {
+  const res = await fetch(`${BASE_URL}/api/deployment/rolling`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ total_servers: Number(totalServers), batch_size: Number(batchSize), current_step: Number(currentStep) }),
+  });
+  if (!res.ok) throw new Error(`Rolling update error: ${res.status}`);
   return await res.json();
 }

@@ -4,11 +4,15 @@ export default function Header({ currentTab, backendStatus }) {
   const getTabLabel = () => {
     switch (currentTab) {
       case 'overview':
-        return 'Overview & Dashboard';
+        return 'Overview & Laboratory Dashboard';
       case 'complexity':
         return 'Experiment 8: Cyclomatic Complexity Calculator';
       case 'blackbox':
         return 'Experiment 9: Black-Box Testing Simulator';
+      case 'cocomo':
+        return 'Experiment 3: Basic COCOMO Cost & Effort Estimation';
+      case 'deployment':
+        return 'Experiment 9 (DevOps): Release & Deployment Strategies';
       default:
         return 'Software Quality Simulator';
     }
@@ -18,7 +22,7 @@ export default function Header({ currentTab, backendStatus }) {
     <header className="app-header">
       <div className="header-title-group">
         <h1>{getTabLabel()}</h1>
-        <p>Software Engineering Laboratory (SE-LAB)</p>
+        <p>Software Engineering Laboratory (23MCA153)</p>
       </div>
 
       <div className="header-actions">
@@ -32,7 +36,7 @@ export default function Header({ currentTab, backendStatus }) {
           }`}
           title={
             backendStatus === 'connected'
-              ? 'FastAPI backend connected at http://127.0.0.1:8000'
+              ? 'FastAPI backend connected'
               : 'FastAPI backend is offline'
           }
         >
