@@ -15,7 +15,7 @@ export async function checkBackendHealth() {
   }
 }
 
-// Module 1: Cyclomatic Complexity (EXP-8)
+// Module 1: Cyclomatic Complexity
 export async function calculateComplexity(nodes, edges, components = 1) {
   const res = await fetch(`${BASE_URL}/api/complexity/calculate`, {
     method: 'POST',
@@ -35,7 +35,7 @@ export async function getComplexityExamples() {
   return await res.json();
 }
 
-// Module 2: Black-Box Testing (EXP-9)
+// Module 2: Black-Box Testing
 export async function generateBlackboxTests(technique = 'ALL') {
   const res = await fetch(`${BASE_URL}/api/blackbox/generate-tests`, {
     method: 'POST',
@@ -76,7 +76,7 @@ export async function evaluateMark(mark) {
   return await res.json();
 }
 
-// Module 3: Basic COCOMO Estimation (EXP-3)
+// Module 3: Basic COCOMO Estimation
 export async function estimateCocomo(kloc, mode, costPerPm = 5000.0) {
   const res = await fetch(`${BASE_URL}/api/cocomo/estimate`, {
     method: 'POST',
@@ -90,7 +90,7 @@ export async function estimateCocomo(kloc, mode, costPerPm = 5000.0) {
   return await res.json();
 }
 
-// Module 4: Release & Deployment Strategies (EXP-9 DevOps)
+// Module 4: Release & Deployment Strategies
 export async function simulateBlueGreen(switchToGreen, greenHealthy = true) {
   const res = await fetch(`${BASE_URL}/api/deployment/blue-green`, {
     method: 'POST',

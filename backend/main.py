@@ -9,7 +9,7 @@ from routers.deployment import router as deployment_router
 
 app = FastAPI(
     title="Software Quality and Testing Simulator API",
-    description="Backend API for Software Engineering Laboratory (EXP-3, EXP-8, EXP-9)",
+    description="Backend API for Software Quality and Testing Simulator",
     version="1.1.0"
 )
 
