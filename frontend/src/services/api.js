@@ -120,3 +120,79 @@ export async function simulateRollingUpdate(totalServers, batchSize, currentStep
   if (!res.ok) throw new Error(`Rolling update error: ${res.status}`);
   return await res.json();
 }
+
+// Module 5: Library Management System (SOLID Principles & OOP)
+export async function getLibraryState() {
+  const res = await fetch(`${BASE_URL}/api/library/state`);
+  if (!res.ok) throw new Error(`Failed to fetch library state: ${res.status}`);
+  return await res.json();
+}
+
+export async function resetLibraryState() {
+  const res = await fetch(`${BASE_URL}/api/library/reset`, { method: 'POST' });
+  if (!res.ok) throw new Error(`Failed to reset library: ${res.status}`);
+  return await res.json();
+}
+
+export async function addLibraryBook(id, title, author) {
+  const res = await fetch(`${BASE_URL}/api/library/add-book`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ id: Number(id), title, author }),
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.detail || `Add book error: ${res.status}`);
+  }
+  return await res.json();
+}
+
+export async function borrowLibraryBook(memberId, bookId, channel = 'Email') {
+  const res = await fetch(`${BASE_URL}/api/library/borrow`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ member_id: Number(memberId), book_id: Number(bookId), notification_channel: channel }),
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.detail || `Borrow error: ${res.status}`);
+  }
+  return await res.json();
+}
+
+export async function returnLibraryBook(memberId, bookId, daysOverdue = 0, channel = 'Email') {
+  const res = await fetch(`${BASE_URL}/api/library/return`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      member_id: Number(memberId),
+      book_id: Number(bookId),
+      days_overdue: Number(daysOverdue),
+      notification_channel: channel
+    }),
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.detail || `Return error: ${res.status}`);
+  }
+  return await res.json();
+}
+
+export async function calculateLibraryFine(category, daysOverdue) {
+  const res = await fetch(`${BASE_URL}/api/library/calculate-fine`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ category, days_overdue: Number(daysOverdue) }),
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.detail || `Calculate fine error: ${res.status}`);
+  }
+  return await res.json();
+}
+
+export async function getSolidInfo() {
+  const res = await fetch(`${BASE_URL}/api/library/solid-info`);
+  if (!res.ok) throw new Error(`Failed to load SOLID info: ${res.status}`);
+  return await res.json();
+}

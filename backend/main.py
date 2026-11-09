@@ -6,6 +6,7 @@ from routers.complexity import router as complexity_router
 from routers.blackbox import router as blackbox_router
 from routers.cocomo import router as cocomo_router
 from routers.deployment import router as deployment_router
+from routers.library import router as library_router
 
 app = FastAPI(
     title="Software Quality and Testing Simulator API",
@@ -27,6 +28,7 @@ app.include_router(complexity_router)
 app.include_router(blackbox_router)
 app.include_router(cocomo_router)
 app.include_router(deployment_router)
+app.include_router(library_router)
 
 @app.get("/api/info")
 def get_api_info():
@@ -38,7 +40,8 @@ def get_api_info():
             "Cyclomatic Complexity Calculator",
             "Black-Box Testing Simulator",
             "Basic COCOMO Estimation",
-            "Release & Deployment Strategies"
+            "Release & Deployment Strategies",
+            "Library Management System (SOLID Principles)"
         ]
     }
 

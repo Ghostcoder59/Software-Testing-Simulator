@@ -6,6 +6,7 @@ import ComplexityPage from './pages/ComplexityPage';
 import BlackBoxPage from './pages/BlackBoxPage';
 import CocomoPage from './pages/CocomoPage';
 import DeploymentPage from './pages/DeploymentPage';
+import LibraryPage from './pages/LibraryPage';
 import { checkBackendHealth } from './services/api';
 
 export default function App() {
@@ -104,6 +105,10 @@ export default function App() {
 
         {currentTab === 'deployment' && (
           <DeploymentPage onDeploymentSimulated={handleDeploymentSimulated} />
+        )}
+
+        {currentTab === 'library' && (
+          <LibraryPage />
         )}
       </main>
     </div>

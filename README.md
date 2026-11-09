@@ -16,12 +16,13 @@ The application is publicly accessible through its deployed web interface.
 
 ## 🧪 Core Simulation Modules
 
-The application consists of four interactive modules:
+The application consists of five interactive modules:
 
 1. **Cyclomatic Complexity Calculator** – Measures program complexity and estimates the number of independent execution paths.
 2. **Black-Box Testing Simulator** – Demonstrates Boundary Value Analysis (BVA) and Equivalence Partitioning (EP).
 3. **Basic COCOMO Cost Estimator** – Calculates software development effort, estimated duration, and average team size.
 4. **Release & Deployment Strategies Simulator** – Demonstrates Blue-Green Deployment, Canary Releases, and Rolling Updates.
+5. **Library Management System (SOLID Principles & OOP)** – Demonstrates the five SOLID principles through polymorphic fine strategies, member quotas, storage isolation, and Email/SMS notifications.
 
 ---
 
@@ -181,6 +182,18 @@ This module demonstrates three commonly used software deployment strategies and 
 
 ---
 
+### 5. Library Management System (SOLID Principles & OOP)
+
+This module demonstrates the practical application of the five **SOLID principles of object-oriented design** within an interactive Library Management System:
+
+- **Single Responsibility Principle (SRP):** Book inventory storage, borrowing workflows, fine calculation, and messaging services are decoupled into independent components.
+- **Open/Closed Principle (OCP):** Overdue fine calculations use polymorphic strategies across member categories (Student: ₹2/day, Faculty: ₹1/day, Guest: ₹4/day) without modifying loan logic.
+- **Liskov Substitution Principle (LSP):** Distinct member types (Student, Faculty, Guest) conform polymorphically to the base Member contract while enforcing custom quotas (3, 5, 2 books).
+- **Interface Segregation Principle (ISP):** Storage operations (Add, Find, Count) are isolated from notification and fine interfaces.
+- **Dependency Inversion Principle (DIP):** The high-level circulation engine depends on abstract notification interfaces, allowing runtime switching between Email and SMS gateways.
+
+---
+
 ## 🛠️ Technology Stack
 
 The application follows a modern frontend-backend architecture.
@@ -204,7 +217,7 @@ This separation improves modularity, maintainability, and scalability.
 
 ## 🧪 Software Testing & Quality Assurance
 
-The project includes an automated test suite consisting of **22 automated tests** covering:
+The project includes an automated test suite consisting of **29 automated tests** covering:
 
 - Mathematical calculation formulas.
 - Input validation and boundary conditions.

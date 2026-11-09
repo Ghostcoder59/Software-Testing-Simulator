@@ -13,6 +13,8 @@ export default function Header({ currentTab, backendStatus }) {
         return 'Basic COCOMO Cost & Effort Estimation';
       case 'deployment':
         return 'Release & Deployment Strategies';
+      case 'library':
+        return 'Library Management System (SOLID Principles & OOP)';
       default:
         return 'Software Quality Simulator';
     }

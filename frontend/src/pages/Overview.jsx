@@ -35,6 +35,9 @@ export default function Overview({ setCurrentTab, stats }) {
           <button onClick={() => setCurrentTab('deployment')} className="btn btn-secondary">
             Deployment Strategies &rarr;
           </button>
+          <button onClick={() => setCurrentTab('library')} className="btn btn-secondary">
+            Library System (SOLID) &rarr;
+          </button>
         </div>
       </div>
 
@@ -141,6 +144,32 @@ export default function Overview({ setCurrentTab, stats }) {
 
           <button onClick={() => setCurrentTab('deployment')} className="btn btn-secondary" style={{ width: '100%' }}>
             Launch Deployment Simulator
+          </button>
+        </div>
+
+        {/* Module 5: Library Management System */}
+        <div className="card">
+          <div className="card-header">
+            <div>
+              <span style={{ fontSize: '0.72rem', fontWeight: 700, textTransform: 'uppercase', color: 'var(--text-muted)' }}>
+                Object-Oriented Design & SOLID
+              </span>
+              <h3 className="card-title" style={{ marginTop: '0.2rem' }}>
+                Library Management System
+              </h3>
+            </div>
+            <span className="badge badge-outline">SOLID OOP</span>
+          </div>
+
+          <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)', lineHeight: '1.5', marginBottom: '1rem' }}>
+            Implements the five SOLID principles with polymorphic fine strategies, member quotas, storage isolation, and Email/SMS notifications:
+            <strong className="mono" style={{ display: 'block', marginTop: '0.35rem', color: 'var(--text-primary)' }}>
+              SRP &nbsp;•&nbsp; OCP &nbsp;•&nbsp; LSP &nbsp;•&nbsp; ISP &nbsp;•&nbsp; DIP
+            </strong>
+          </p>
+
+          <button onClick={() => setCurrentTab('library')} className="btn btn-secondary" style={{ width: '100%' }}>
+            Launch Library System
           </button>
         </div>
       </div>
