@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import Overview from './pages/Overview';
-// import ComplexityPage from './pages/ComplexityPage'; // removed module
-// import BlackBoxPage from './pages/BlackBoxPage'; // removed module
+import SdlcPage from './pages/SdlcPage';
+import EstimationPage from './pages/EstimationPage';
+import TestingPage from './pages/TestingPage';
+import CaseStudyPage from './pages/CaseStudyPage';
 import CocomoPage from './pages/CocomoPage';
 import DeploymentPage from './pages/DeploymentPage';
 import LibraryPage from './pages/LibraryPage';
@@ -18,28 +20,6 @@ export default function App() {
     cocomoEstimations: 0,
     deploymentsSimulated: 0,
   });
-
-  const handleCalculationPerformed = () => {
-    setStats((prev) => ({
-      ...prev,
-      complexityCalculations: prev.complexityCalculations + 1,
-    }));
-  };
-
-  const handleTestRun = () => {
-    setStats((prev) => ({
-      ...prev,
-      testsExecuted: prev.testsExecuted + 1,
-    }));
-  };
-
-  const handleSuiteRun = (count = 1) => {
-    setStats((prev) => ({
-      ...prev,
-      suitesRun: prev.suitesRun + 1,
-      testsExecuted: prev.testsExecuted + count,
-    }));
-  };
 
   const handleCocomoPerformed = () => {
     setStats((prev) => ({
@@ -88,9 +68,21 @@ export default function App() {
           <Overview setCurrentTab={setCurrentTab} stats={stats} />
         )}
 
-        {/* Complexity module removed – page no longer exists */}
+        {currentTab === 'sdlc' && (
+          <SdlcPage setCurrentTab={setCurrentTab} />
+        )}
 
+        {currentTab === 'estimation' && (
+          <EstimationPage setCurrentTab={setCurrentTab} />
+        )}
 
+        {currentTab === 'testing' && (
+          <TestingPage />
+        )}
+
+        {currentTab === 'case' && (
+          <CaseStudyPage setCurrentTab={setCurrentTab} />
+        )}
 
         {currentTab === 'cocomo' && (
           <CocomoPage onEstimatePerformed={handleCocomoPerformed} />
