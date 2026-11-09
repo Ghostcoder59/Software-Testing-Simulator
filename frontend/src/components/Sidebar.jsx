@@ -14,27 +14,41 @@ export default function Sidebar({ currentTab, setCurrentTab }) {
         </svg>
       ),
     },
+    // New primary modules – placeholder icons
     {
-      id: 'complexity',
-      label: 'Cyclomatic Complexity',
+      id: 'sdlc',
+      label: 'Software Development & Design',
       icon: (
         <svg className="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <circle cx="6" cy="6" r="3" />
-          <circle cx="18" cy="18" r="3" />
-          <circle cx="6" cy="18" r="3" />
-          <line x1="6" y1="9" x2="6" y2="15" />
-          <line x1="9" y1="6" x2="18" y2="15" />
+          <circle cx="12" cy="12" r="8" />
         </svg>
       ),
     },
     {
-      id: 'blackbox',
-      label: 'Black-Box Testing',
+      id: 'estimation',
+      label: 'Estimation & Documentation',
       icon: (
         <svg className="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
-          <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
-          <line x1="12" y1="22.08" x2="12" y2="12" />
+          <polygon points="5,3 19,12 5,21" />
+        </svg>
+      ),
+    },
+    {
+      id: 'testing',
+      label: 'Testing & Quality',
+      icon: (
+        <svg className="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M4 12h16" />
+          <path d="M12 4v16" />
+        </svg>
+      ),
+    },
+    {
+      id: 'case',
+      label: 'Case‑Study Workspace',
+      icon: (
+        <svg className="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <rect x="4" y="4" width="16" height="16" rx="2" />
         </svg>
       ),
     },

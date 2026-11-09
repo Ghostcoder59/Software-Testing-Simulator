@@ -2,16 +2,15 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 import os
-from routers.complexity import router as complexity_router
-from routers.blackbox import router as blackbox_router
+# Removed unused routers for removed modules
 from routers.cocomo import router as cocomo_router
 from routers.deployment import router as deployment_router
 from routers.library import router as library_router
 
 app = FastAPI(
-    title="Software Quality and Testing Simulator API",
-    description="Backend API for Software Quality and Testing Simulator",
-    version="1.1.0"
+    title="Software Engineering Laboratory Simulation Platform API",
+    description="Backend API for the restructured platform",
+    version="2.0.0",
 )
 
 # CORS configuration allowing local development and deployed Vercel frontend domains
@@ -23,9 +22,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Include API module routers
-app.include_router(complexity_router)
-app.include_router(blackbox_router)
+# Include API module routers (only the kept modules)
 app.include_router(cocomo_router)
 app.include_router(deployment_router)
 app.include_router(library_router)
@@ -33,24 +30,24 @@ app.include_router(library_router)
 @app.get("/api/info")
 def get_api_info():
     return {
-        "message": "Welcome to Software Quality and Testing Simulator API",
+        "message": "Welcome to Software Engineering Laboratory Simulation Platform API",
         "docs_url": "/docs",
         "status": "online",
         "modules": [
-            "Cyclomatic Complexity Calculator",
-            "Black-Box Testing Simulator",
-            "Basic COCOMO Estimation",
-            "Release & Deployment Strategies",
-            "Library Management System (SOLID Principles)"
-        ]
+            "Software Development & Design",
+            "Software Estimation & Documentation",
+            "Software Testing",
+            "Release & Deployment",
+            "Case Study Workspace (optional)",
+        ],
     }
 
 @app.get("/api/health")
 def health_check():
     return {
         "status": "healthy",
-        "app": "Software Quality and Testing Simulator",
-        "version": "1.1.0"
+        "app": "Software Engineering Laboratory Simulation Platform",
+        "version": "2.0.0",
     }
 
 # Unified Mode: If frontend/dist exists, serve static assets & React SPA directly
@@ -61,7 +58,7 @@ else:
     @app.get("/")
     def read_root():
         return {
-            "message": "Welcome to Software Quality and Testing Simulator API",
+            "message": "Welcome to Software Engineering Laboratory Simulation Platform API",
             "docs_url": "/docs",
-            "status": "online"
+            "status": "online",
         }

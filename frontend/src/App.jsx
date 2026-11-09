@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import Overview from './pages/Overview';
-import ComplexityPage from './pages/ComplexityPage';
-import BlackBoxPage from './pages/BlackBoxPage';
+// import ComplexityPage from './pages/ComplexityPage'; // removed module
+// import BlackBoxPage from './pages/BlackBoxPage'; // removed module
 import CocomoPage from './pages/CocomoPage';
 import DeploymentPage from './pages/DeploymentPage';
 import LibraryPage from './pages/LibraryPage';
@@ -15,9 +15,6 @@ export default function App() {
 
   // Real stats tracked strictly from actual executions in this session
   const [stats, setStats] = useState({
-    complexityCalculations: 0,
-    testsExecuted: 0,
-    suitesRun: 0,
     cocomoEstimations: 0,
     deploymentsSimulated: 0,
   });
@@ -91,13 +88,9 @@ export default function App() {
           <Overview setCurrentTab={setCurrentTab} stats={stats} />
         )}
 
-        {currentTab === 'complexity' && (
-          <ComplexityPage onCalculationPerformed={handleCalculationPerformed} />
-        )}
+        {/* Complexity module removed – page no longer exists */}
 
-        {currentTab === 'blackbox' && (
-          <BlackBoxPage onTestRun={handleTestRun} onSuiteRun={handleSuiteRun} />
-        )}
+
 
         {currentTab === 'cocomo' && (
           <CocomoPage onEstimatePerformed={handleCocomoPerformed} />

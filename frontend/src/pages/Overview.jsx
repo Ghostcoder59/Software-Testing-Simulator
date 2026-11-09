@@ -23,11 +23,17 @@ export default function Overview({ setCurrentTab, stats }) {
         </p>
 
         <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap' }}>
-          <button onClick={() => setCurrentTab('complexity')} className="btn btn-primary">
-            Cyclomatic Complexity &rarr;
+          <button onClick={() => setCurrentTab('sdlc')} className="btn btn-primary">
+            Software Development &amp; Design &rarr;
           </button>
-          <button onClick={() => setCurrentTab('blackbox')} className="btn btn-secondary">
-            Black-Box Testing &rarr;
+          <button onClick={() => setCurrentTab('estimation')} className="btn btn-secondary">
+            Estimation &amp; Documentation &rarr;
+          </button>
+          <button onClick={() => setCurrentTab('testing')} className="btn btn-secondary">
+            Testing &amp; Quality &rarr;
+          </button>
+          <button onClick={() => setCurrentTab('case')} className="btn btn-secondary">
+            Case‑Study Workspace &rarr;
           </button>
           <button onClick={() => setCurrentTab('cocomo')} className="btn btn-secondary">
             COCOMO Model &rarr;

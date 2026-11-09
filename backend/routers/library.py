@@ -56,3 +56,4 @@ def fine_endpoint(payload: FineCalculationRequest):
 def get_solid_info():
     """Returns detailed mapping of the 5 SOLID principles to the Library Architecture."""
     return get_solid_breakdown()
+

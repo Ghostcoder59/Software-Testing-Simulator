@@ -63,3 +63,4 @@ class OperationResponse(BaseModel):
     solid_principle: str
     notification: Optional[NotificationLog] = None
     fine_amount: Optional[float] = 0.0
+

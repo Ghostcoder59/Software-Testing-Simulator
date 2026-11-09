@@ -80,3 +80,4 @@ def test_solid_breakdown_contains_all_five():
     assert len(info["principles"]) == 5
     letters = [p["letter"] for p in info["principles"]]
     assert letters == ["S", "O", "L", "I", "D"]
+
